@@ -9,6 +9,9 @@ Scripts for configuring and deploying DEV, STAGING, RELEASE environments on a de
 1. Install Ubuntu LTS on your machine.
 2. Open the terminal by connecting via ssh or using the GUI, on behalf of a superuser or a user with superuser rights
 3. Open the generate-nginx-configs script files.sh and init-system.sh and edit the variables associated with domain names and ports
+
+
+Open generate-nginx-configs.sh file:
 ```
 nano generate-nginx-configs.sh
 ```
@@ -42,9 +45,19 @@ PROJECT_PORTS=(
 )
 ```
 
+
+Open init-system.sh file:
 ```
 nano init-system.sh
 ```
+
+Change the domain names by analogy:
+```
+PROJECT_DOMAIN_RELEASE="acvod.alignedcode.com"
+PROJECT_DOMAIN_STAGING="acvod-staging.alignedcode.com"
+PROJECT_DOMAIN_DEV="acvod-dev.alignedcode.com"
+```
+
 4. Execute these commands:
 ```
 cd existing_repo
