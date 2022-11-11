@@ -60,7 +60,6 @@ PROJECT_DOMAIN_DEV="acvod-dev.alignedcode.com"
 
 4. Execute these commands:
 ```
-cd existing_repo
 git clone https://gitlab.com/aligned-code/deployments-configs/machine.git
 cd machine
 ./generate-nginx-configs.sh
