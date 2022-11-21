@@ -96,3 +96,12 @@ echo \
 sudo apt-get update
 sudo apt-get install docker-ce docker-ce-cli containerd.io docker-compose-plugin
 echo -e "\033[32mThe Docker has been installed!\033[m" && echo
+
+
+echo -e "\033[32m[===============================================================]\033[m"
+echo -e "\033[32m[STEP 4. SETUP CRON JOB]\033[m"
+echo -e "\033[32m[===============================================================]\033[m"
+
+line="0 12 * * * /usr/bin/certbot renew --quiet"
+(crontab -u $(whoami) -l; echo "$line" ) | crontab -u $(whoami) -
+echo -e "\033[32mCron job has been set!\033[m" && echo
