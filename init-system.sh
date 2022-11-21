@@ -99,7 +99,7 @@ echo -e "\033[32mThe Docker has been installed!\033[m" && echo
 
 
 echo -e "\033[32m[===============================================================]\033[m"
-echo -e "\033[32m[STEP 4. SETUP CRON JOB]\033[m"
+echo -e "\033[32m[STEP 4. Create automatically Renew Let's Encrypt Certificates]\033[m"
 echo -e "\033[32m[===============================================================]\033[m"
 
 line="0 12 * * * /usr/bin/certbot renew --quiet"
