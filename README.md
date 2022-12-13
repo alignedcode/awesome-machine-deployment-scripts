@@ -62,8 +62,14 @@ PROJECT_DOMAIN_DEV="acvod-dev.alignedcode.com"
 ```
 git clone https://gitlab.com/aligned-code/deployments-configs/machine.git
 cd machine
-./generate-nginx-configs.sh
-./init-system.sh
+```
+
+```
+sudo ./generate-nginx-configs.sh
+```
+
+```
+sudo ./init-system.sh
 ```
 
 5. Create automatically Renew Let's Encrypt Certificates
