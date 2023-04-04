@@ -1,9 +1,6 @@
 #!/bin/bash
 
-# VARIABLES
-PROJECT_DOMAIN_RELEASE="acvod.alignedcode.com"
-PROJECT_DOMAIN_STAGING="acvod-staging.alignedcode.com"
-PROJECT_DOMAIN_DEV="acvod-dev.alignedcode.com"
+. ./environment.config
 
 
 echo -e "\033[32m[===============================================================]\033[m"
@@ -56,7 +53,7 @@ echo -e "\033[32mThe Nginx has been installed!\033[m" && echo
 
 
 echo -e "\033[32m[===============================================================]\033[m"
-echo -e "\033[32m[STEP 2. CONFIGURATING NGINX AND SSL]\033[m"
+echo -e "\033[32m[STEP 2. CONFIGURATION NGINX AND SSL]\033[m"
 echo -e "\033[32m[===============================================================]\033[m"
 
 # Install an ssl certificate provider 
@@ -69,9 +66,10 @@ cp nginx/nginx.conf /etc/nginx/nginx.conf
 # Checking the validity of nginx.conf and restart nginx
 nginx -t && nginx -s reload
 
-sudo certbot --nginx -d $PROJECT_DOMAIN_DEV     --register-unsafely-without-email
-sudo certbot --nginx -d $PROJECT_DOMAIN_STAGING --register-unsafely-without-email
-sudo certbot --nginx -d $PROJECT_DOMAIN_RELEASE --register-unsafely-without-email
+for i in "${!DOMAINS[@]}"
+do
+sudo certbot --nginx -d "${DOMAINS[$i]}" --register-unsafely-without-email
+done
 
 # Update nginx config
 cp nginx/ssl.nginx.conf /etc/nginx/nginx.conf

@@ -1,34 +1,6 @@
 #!/bin/bash
 
-# VARIABLES
-
-#=======================================================================================
-# ATTENTION!
-# The order of variable domains in the array is important!
-# RELEASE_DOMAIN, STAGING_DOMAIN, DEV_DOMAIN
-#=======================================================================================
-
-PROJECT_DOMAINS=(
-    "acvod.alignedcode.com" 
-    "acvod-staging.alignedcode.com" 
-    "acvod-dev.alignedcode.com"
-)
-
-#=======================================================================================
-# ATTENTION!
-# SERVER PROJECT PORTS 800*
-# CLIENT PROJECT PORTS 808*
-
-# The order of variable ports in the array is important!
-# RELEASE_DOMAIN, STAGING_DOMAIN, DEV_DOMAIN
-#=======================================================================================
-
-PROJECT_PORTS=(
-    "8082" 
-    "8081" 
-    "8080" 
-)
-
+. ./environment.config
 
 #=======================================================================================
 #
@@ -96,16 +68,17 @@ mkdir nginx
 __nginx_ssl="$__nginx"
 __nginx_no_ssl="$__nginx"
 
-for i in ${!PROJECT_DOMAINS[@]}; do
+for i in "${!DOMAINS[@]}"
+do
 
 server_record="
     server {
         listen       80;
-        server_name  ${PROJECT_DOMAINS[$i]};
+        server_name  ${DOMAINS[$i]};
         gzip_static on;
 
         location / {
-            proxy_pass http://127.0.0.1:${PROJECT_PORTS[$i]}\$request_uri;
+            proxy_pass http://127.0.0.1:${PORTS[$i]}\$request_uri;
         }
     }
 "
@@ -113,15 +86,15 @@ server_record="
 server_record_ssl="
     server {
         listen       443 ssl;
-        server_name  ${PROJECT_DOMAINS[$i]};
-        ssl_certificate /etc/letsencrypt/live/${PROJECT_DOMAINS[$i]}/fullchain.pem;
-        ssl_certificate_key /etc/letsencrypt/live/${PROJECT_DOMAINS[$i]}/privkey.pem;
+        server_name  ${DOMAINS[$i]};
+        ssl_certificate /etc/letsencrypt/live/${DOMAINS[$i]}/fullchain.pem;
+        ssl_certificate_key /etc/letsencrypt/live/${DOMAINS[$i]}/privkey.pem;
         
         add_header Strict-Transport-Security \"max-age=31536000\";
         gzip_static on;
 
         location / {
-            proxy_pass http://127.0.0.1:${PROJECT_PORTS[$i]}\$request_uri;
+            proxy_pass http://127.0.0.1:${PORTS[$i]}\$request_uri;
         }
     }
 "
