@@ -65,6 +65,9 @@ chmod u+x ./run.sh
 sudo ./run.sh
 ```
 
+> **Info** <br/>
+> During the execution of the script, agree with everything, prescribing Y or simply pressing Enter
+
 ## run.sh
 
 Combines the main scripts to run in the right order
