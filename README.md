@@ -59,6 +59,12 @@ PROJECT_PORTS=(
 sudo ./run.sh
 ```
 
+If the command is not found, make the script an executable file
+```bash
+chmod u+x ./run.sh
+sudo ./run.sh
+```
+
 ## run.sh
 
 Combines the main scripts to run in the right order
