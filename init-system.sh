@@ -4,6 +4,8 @@
 
 
 echo -e "\033[32m[===============================================================]\033[m"
+echo -e "\033[32m[ init-system.sh                                                ]\033[m"
+echo -e "\033[32m[                                                               ]\033[m"
 echo -e "\033[32m[ Performs the initial configuration of Ubuntu server           ]\033[m"
 echo -e "\033[32m[                                                               ]\033[m"
 echo -e "\033[32m[ Author: Andrei Petrov <andrei.petrov@alignedcode.com>         ]\033[m"

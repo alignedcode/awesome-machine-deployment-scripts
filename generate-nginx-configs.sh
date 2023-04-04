@@ -3,8 +3,10 @@
 . ./environment.config
 
 echo -e "\033[32m[==================================================================]\033[m"
-echo -e "\033[32m[ Based on the list of domain names and ports from the config file ]\033[m"
-echo -e "\033[32m[ file, generates two config files for nginx: for 80 and 443 ports ]\033[m"
+echo -e "\033[32m[ generate-nginx-configs.sh                                        ]\033[m"
+echo -e "\033[32m[                                                                  ]\033[m"
+echo -e "\033[32m[ Based on the list of domain names and ports from the config file,]\033[m"
+echo -e "\033[32m[ generates two config files for nginx: for 80 and 443 ports       ]\033[m"
 echo -e "\033[32m[                                                                  ]\033[m"
 echo -e "\033[32m[ Author: Andrei Petrov <andrei.petrov@alignedcode.com>            ]\033[m"
 echo -e "\033[32m[==================================================================]\033[m"
