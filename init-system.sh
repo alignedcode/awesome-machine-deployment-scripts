@@ -2,7 +2,6 @@
 
 . ./environment.config
 
-
 echo -e "\033[32m[===============================================================]\033[m"
 echo -e "\033[32m[STEP 0. UPDATE AND INIT SYSTEM]\033[m"
 echo -e "\033[32m[===============================================================]\033[m"
@@ -14,10 +13,10 @@ echo -e "\033[32mThe system has been updated!\033[m" && echo
 
 # Create swap file
 free -h
-sudo fallocate -l 5G /swapfile      # create swapfile
-sudo chmod 600 /swapfile            # leave access only to the superuser
-sudo mkswap /swapfile               # create swap filesystem
-sudo swapon /swapfile               # enable swapfile
+sudo fallocate -l "${SWAP_SIZE}" /swapfile   # create swapfile
+sudo chmod 600 /swapfile                     # leave access only to the superuser
+sudo mkswap /swapfile                        # create swap filesystem
+sudo swapon /swapfile                        # enable swapfile
 free -h
 echo -e "\033[32mThe swap section has been created!\033[m" && echo
 
